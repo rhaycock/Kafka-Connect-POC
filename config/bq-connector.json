@@ -1,0 +1,22 @@
+{
+  "name": "bq-sink-test",
+  "config": {
+    "connector.class": "com.wepay.kafka.connect.bigquery.BigQuerySinkConnector",
+    "tasks.max": "1",
+    "topics": "",
+    "project": "",
+    "defaultDataset": "",
+    "keyfile": "/etc/kafka/secrets/<filename here>.key",
+    "schemaRetriever": "com.wepay.kafka.connect.bigquery.retrieve.IdentitySchemaRetriever",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "value.converter.schema.registry.url": "",
+    "value.converter.enhanced.avro.schema.support": "true",
+    "schema.registry.url": "",
+    "autoUpdateSchemas": "true",
+    "offsets.retention.minutes": 2880,
+    "auto.offset.reset": "earliest",
+    "enable.auto.commit": "true",
+    "isolation.level": "read_committed"
+  }
+}

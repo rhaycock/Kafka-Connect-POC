@@ -1,0 +1,12 @@
+*.pem
+*.pub
+*connect-secrets.properties
+*my_password.txt
+logs
+__pycache__
+/**/docker/**/.env
+.env
+*.key
+*.jaas
+*.jar
+*.jks
