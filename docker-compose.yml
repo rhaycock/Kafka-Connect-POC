@@ -85,7 +85,7 @@ services:
 
       # Class path to add custom authentication
       CLASSPATH: '/etc/kafka/secrets/${COMMON_JAR}:/etc/custom/build/TopicRecordNameStrategyCustom.jar'
-      # Connect Worker
+      # Connect Worker authentication
       CONNECT_SECURITY_PROTOCOL: SASL_SSL
       # RBAC
       CONNECT_SASL_MECHANISM: 'AWS_MSK_IAM'
@@ -95,7 +95,7 @@ services:
               software.amazon.msk.auth.iam.IAMLoginModule required \
               awsRoleArn="${AWS_ROLE_ARN}";
 
-      # Connect Producer
+      # Connect Producer authentication
       # CONNECT_PRODUCER_SECURITY_PROTOCOL: SASL_SSL
       # # Producer
       # CONNECT_PRODUCER_SASL_MECHANISM: 'AWS_MSK_IAM'
@@ -107,9 +107,8 @@ services:
       #         software.amazon.msk.auth.iam.IAMLoginModule required \
       #         awsRoleArn="${AWS_ROLE_ARN}";
 
-      # Connect Consumer
+      # Connect Consumer authentication
       CONNECT_CONSUMER_SECURITY_PROTOCOL: SASL_SSL
-      # Consumer
       CONNECT_CONSUMER_SASL_MECHANISM: 'AWS_MSK_IAM'
       CONNECT_CONSUMER_SASL_LOGIN_CALLBACK_HANDLER_CLASS: ${SASL_CALLBACK_HANDLER_CLASS}
       CONNECT_CONSUMER_CONFLUENT_MONITORING_INTERCEPTOR_SASL_MECHANISM: 'AWS_MSK_IAM'
@@ -119,7 +118,7 @@ services:
               software.amazon.msk.auth.iam.IAMLoginModule required \
               awsRoleArn="${AWS_ROLE_ARN}";
 
-      # SASL_CLIENT_CALLBACK_HANDLER_CLASS: ${SASL_CALLBACK_HANDLER_CLASS}
+      # AWS credentials
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
 
@@ -132,7 +131,7 @@ services:
       # Set auth config
       KAFKA_OPTS: -Djava.security.auth.login.config=/etc/kafka/secrets/connect.jaas
 
-      # CONNECTOR_ properties are for the connector itself, example shown below
+      # CONNECTOR_ properties are for the connector itself when running in standalone mode, example shown below
       # CONNECT_OFFSET_STORAGE_FILE_FILENAME: /tmp/connect.offsets
       # CONNECTOR_NAME: bq-sink-connector
       # CONNECTOR_CONNECTOR_CLASS: com.wepay.kafka.connect.bigquery.BigQuerySinkConnector
