@@ -1,0 +1,30 @@
+{
+	"name": "gcs-sink-test",
+	"config": {
+		"connector.class": "io.aiven.kafka.connect.gcs.GcsSinkConnector",
+		"tasks.max": "1",
+		"topics": "test-topic",
+		"gcs.bucket.name": "",
+		"gcs.credentials.path": "/etc/kafka/secrets/credentials.key",
+		"format.output.type": "jsonl",
+		"format.output.envelope": false,
+		"format.output.fields": "value",
+		"_format.output.fields": "key,value,offset,timestamp,headers",
+		"file.name.prefix": "test-folder/",
+		"file.compression.type": "none",
+		"file.name.timestamp.timezone": "UTC",
+		"file.name.timestamp.source": "wallclock",
+		"file.name.template": "y={{timestamp:unit=yyyy}}/m={{timestamp:unit=MM}}/d={{timestamp:unit=dd}}/H={{timestamp:unit=HH}}/{{topic}}-{{partition:padding=true}}-{{start_offset:padding=true}}.txt",
+		"key.converter": "org.apache.kafka.connect.storage.StringConverter",
+		"_key.converter": "org.apache.kafka.connect.storage.StringConverter",
+		"key.converter.schemas.enable": false,
+		"value.converter": "org.apache.kafka.connect.storage.StringConverter",
+		"_value.converter": "org.apache.kafka.connect.storage.StringConverter",
+		"__value.converter": "org.apache.kafka.connect.storage.StringConverter",
+		"value.converter.schemas.enable": false,
+		"errors.tolerance": "all",
+		"errors.log.include.messages": true,
+		"errors.deadletterqueue.context.headers.enable": true,
+		"errors.deadletterqueue.topic.replication.factor": 1
+	}
+}
