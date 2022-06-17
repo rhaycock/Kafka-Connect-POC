@@ -6,7 +6,8 @@ Demo repo to show how to bring up either standalone or distributed kafka connect
 
 - This demo has example on how to use SASL_SSL custom authentication (AWS MSK IAM auth)
 - CamelCased connect variable like `defaultDataset` should be mentioned as `CONNECTOR_CAMELCASE_DEFAULT_DATASET`. This is a customization done on standalone template to add support from BQ CamelCase variables
-- If you get `'bash\r'` error, please run `sudo find . -type f -exec dos2unix {} \;` to do windows to dos conversion
+- If you get `'bash\r'` error, please run `sudo find . -type f -exec dos2unix {} \;` in Ubuntu LTS command line to do windows to dos conversion
+- If the dos to unix conversion fails, you may need to disconnect from any VPNs and run `sudo apt-get update && sudo apt-get install dos2unix` to update and install the package
 
 ## How to start connector ?
 
